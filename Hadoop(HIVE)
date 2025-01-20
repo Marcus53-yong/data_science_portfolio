@@ -1,0 +1,140 @@
+Group Assignment
+Title: UTILIZING BIG DATA TOOLS FOR AGODA'S CUSTOMER BOOKING BEHAVIOR ANALYSIS AND DYNAMIC PRICING OPTIMIZATION 
+
+Main task: To analysis the customer demographic by using HIVE.
+
+Tasks:
+1.0 Input the file into HIVE table
+1.1    Move the booking data CSV file (booking.csv) to the Hadoop Distributed File System (HDFS).
+user@user-VirtualBox:~$ hdfs dfs –put /home/<user>/Downloads/booking.csv /user/hive/warehouse/
+
+1.2    Create a table named booking.
+Hive> CREATE TABLE booking ( 
+            company STRING,  
+            user_name STRING,  
+            gender STRING,  
+            age INT,  
+            origin STRING,  
+            destination STRING,  
+            flightType STRING,  
+            flight_price DOUBLE,  
+            time STRING,  
+            distance DOUBLE,  
+            agency STRING,  
+            hotel_name STRING,  
+            place STRING,  
+            days INT,  
+            hotel_price DOUBLE,  
+            total DOUBLE,  
+            flight_day INT,  
+            flight_month INT,  
+            flight_year INT,  
+            hotel_day INT,  
+            hotel_month INT, 
+            hotel_year INT,  
+            flight_day_of_week STRING,  
+            hotel_day_of_week STRING  
+            )  
+    ROW FORMAT DELIMITED  
+    FIELDS TERMINATED BY ','  
+    STORED AS TEXTFILE; 
+
+1.3    Load the CSV file into the HIVE table.
+Hive> LOAD DATA INPATH ‘/user/hive/warehouse/booking.csv’ INTO TABLE booking;
+
+2.0 Analysis the data
+2.1     What is the gender distribution?
+SELECT 
+    gender, 
+    count(gender)
+FROM booking
+GROUP BY gender;
+
+
+2.2     What is the age distribution?
+SELECT 
+    CASE 
+        WHEN age <= 20 THEN 'Below 20'
+        WHEN age BETWEEN 21 AND 30 THEN '21-30'
+        WHEN age BETWEEN 31 AND 40 THEN '31-40'
+        WHEN age BETWEEN 41 AND 50 THEN '41-50'
+        WHEN age BETWEEN 51 AND 60 THEN '51-60'
+        ELSE 'Above 60'
+    END AS age_group,
+    COUNT(*) AS total_customers
+FROM booking
+GROUP BY 
+    CASE 
+        WHEN age <= 20 THEN 'Below 20'
+        WHEN age BETWEEN 21 AND 30 THEN '21-30'
+        WHEN age BETWEEN 31 AND 40 THEN '31-40'
+        WHEN age BETWEEN 41 AND 50 THEN '41-50'
+        WHEN age BETWEEN 51 AND 60 THEN '51-60'
+        ELSE 'Above 60'
+    END
+ORDER BY age_group;
+
+
+2.3     What are the customer preferences by flight types?
+SELECT 
+    flightType,
+    COUNT(*) AS total_customers,
+    ROUND(AVG(flight_price), 2) AS avg_flight_price
+FROM booking
+GROUP BY flightType
+ORDER BY total_customers DESC;
+
+
+2.4     What is the average spending based on age distribution?
+SELECT 
+    CASE 
+        WHEN age <= 20 THEN 'Below 20'
+        WHEN age BETWEEN 21 AND 30 THEN '21-30'
+        WHEN age BETWEEN 31 AND 40 THEN '31-40'
+        WHEN age BETWEEN 41 AND 50 THEN '41-50'
+        WHEN age BETWEEN 51 AND 60 THEN '51-60'
+        ELSE 'Above 60'
+    END AS age_group,
+    ROUND(AVG(total), 2) AS avg_spending
+FROM booking
+GROUP BY 
+    CASE 
+        WHEN age <= 20 THEN 'Below 20'
+        WHEN age BETWEEN 21 AND 30 THEN '21-30'
+        WHEN age BETWEEN 31 AND 40 THEN '31-40'
+        WHEN age BETWEEN 41 AND 50 THEN '41-50'
+        WHEN age BETWEEN 51 AND 60 THEN '51-60'
+        ELSE 'Above 60'
+    END
+ORDER BY avg_spending DESC;
+
+
+2.5     What are the popular destinations by gender?
+SELECT 
+    gender,
+    destination,
+    COUNT(*) AS total_visits
+FROM booking
+GROUP BY gender, destination
+ORDER BY gender, total_visits DESC;
+
+
+2.6     What are the busiest months for flight bookings?
+SELECT 
+    flight_year, 
+    flight_month,
+    COUNT(*) AS total_booking
+FROM booking
+GROUP BY flight_year, flight_month
+ORDER BY total_booking ASC
+LIMIT 5;
+
+
+2.7     What is the average flight price and hotel price by destination?
+SELECT 
+    destination,
+    ROUND(AVG(gliht_price),2) AS flight_price,
+    ROUND(AVG(hotel_price),2) AS hotel_price
+FROM booking
+GROUP BY destination
+ORDER BY flight_price, hotel_price;
