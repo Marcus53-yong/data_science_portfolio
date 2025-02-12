@@ -30,6 +30,6 @@ _Note: Data used in the projects (accessed under data directory) is for demonstr
 - SQL
   - [SQL Practical Exam](https://github.com/Marcus53-yong/data_science_portfolio/blob/main/SQL/SQL_Associate_Cert_2025.pdf): The exam assesses the application of SQL queries to real-world hospitality data, focusing on managing hotel bookings, customer details, room availability, and financial transactions. It covers key areas such as data retrieval, aggregation and reporting, joins, filtering, and condition-based queries within a hospitality database system.  
 
-- _Tools: SQL_
+  - _Tools: SQL_
 
 If you found my work interesting and would like to discuss my portfolio, explore job opportunities, or collaborate, feel free to reach out to me at [marcusyong53@gmail.com](marcusyong53@gmail.com).
