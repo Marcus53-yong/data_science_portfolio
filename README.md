@@ -1,4 +1,4 @@
-# data_science_portfolio
+# Portfolio_Overview
 A repository showcasing my portfolio of data science projects, completed for academic, self-learning, and personal interests. The projects are presented as Jupyter notebooks and R Markdown files.
 
 To learn more about my experience, feel free to visit my [LinkedIn profile.](https://www.linkedin.com/in/ytk99/)
