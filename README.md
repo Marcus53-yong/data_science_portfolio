@@ -32,4 +32,8 @@ _Note: Data used in the projects (accessed under data directory) is for demonstr
 
   - _Tools: SQL_
 
+- Data Visualization
+  - Environment API of Malaysia North Statess' Dashboard: [Public Link](https://public.tableau.com/app/profile/ting.kang.yong/viz/EnvironmentBook/Dashboard1?publish=yes)
+    
+
 If you found my work interesting and would like to discuss my portfolio, explore job opportunities, or collaborate, feel free to reach out to me at [marcusyong53@gmail.com](marcusyong53@gmail.com).
