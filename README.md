@@ -34,6 +34,8 @@ _Note: Data used in the projects (accessed under data directory) is for demonstr
 
 - Data Visualization
   - Environment API of Malaysia North Statess' Dashboard: [Public Link](https://public.tableau.com/app/profile/ting.kang.yong/viz/EnvironmentBook/Dashboard1?publish=yes)
+    <img src="[https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png](https://github.com/Marcus53-yong/data_science_portfolio/blob/main/visuals/Environment%20Dashboard.png)" width="200">
+
     
 
 If you found my work interesting and would like to discuss my portfolio, explore job opportunities, or collaborate, feel free to reach out to me at [marcusyong53@gmail.com](marcusyong53@gmail.com).
